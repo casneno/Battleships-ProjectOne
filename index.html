@@ -3,11 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Battleships</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="main.js"></script>
 </head>
+
 <body>
-    
+    <main>
+        <section class="gamespace">
+            <title>Player's Board</title>
+            <section id="playerboard">
+            </section>
+            <counter class="shipcounter">
+                <div class="ship" class="sub"></div>
+                <div class="ship" class="destroyer"></div>
+                <div class="ship" class="cruiser"></div>
+                <div class="ship" class="carrier"></div>
+            </counter>
+        </section>
+        <section class="gamespace">
+            <title>Computer's Board</title>
+            <section id="computerboard">
+            </section>
+            <counter class="shipcounter">
+                <div class="ship" class="sub"></div>
+                <div class="ship" class="destroyer"></div>
+                <div class="ship" class="cruiser"></div>
+                <div class="ship" class="carrier"></div>
+            </counter>
+        </section>
+    </main>
 </body>
 </html>

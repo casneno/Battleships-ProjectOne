@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 10vmin;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10vmin;
+    padding: 1vmin;
+}
+
+.gamespace {
+    display: flex;
+    flex: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    gap: 2vmin;
+    padding: 1vmin
+}
+
+title {
+    background-color: sandybrown;
+    display: flex;
+    padding: 1vmin;
+    flex-grow: 1;
+
+
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 60vmin;
+    width: 60vmin;
+
+}
+
+.shipcounter {
+    display: flex;
+    justify-content: space-around;
+    gap: 1vmin;
+    background-color: sandybrown;
+    flex-grow: 1;
+}
+
+
+
+
+
+
+#turncounter {
+    background-color: gray;
+    flex-grow: 2;
+
+}
+
+
+
+
+
+
+.column {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-content: ;
+    width: 4vmin;
+    height:60vmin;
+    margin: 0.5vmin;
+    background-color: transparent;
+
+}
+
+.cell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 5vmin;
+    height: 5vmin;
+    margin: 0.5vmin;
+    background-color: gray;
+
+}
+
+
+
+div {
+    display: flex;
+    border-color: red;
+    background-color: grey;
+    width: 4vmin;
+    height: 4vmin;
+
+}
+
+#playerboard{
+    background-color: green;
+
+}
+
+#computerboard{
+
+}
+
