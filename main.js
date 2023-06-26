@@ -1,3 +1,5 @@
+//Coordinates are read as: [column][row].  Ex: '20' = column 2, row 0;
+
 /*----- constants -----*/
 
 const SHIPLIST = [{name: 'sub1', class: 'sub', size: 2}, 
@@ -11,8 +13,8 @@ const SHIPLIST = [{name: 'sub1', class: 'sub', size: 2},
 // boardData = [[{id: 'w'/'shipid', hit: true/false}]]
 
 /*----- app's state (variables) -----*/
-let ROWS = 10;
-let COLUMNS = 10;
+let rows = 10;
+let columns = 10;
 let turn;
 let winner;
 let playerBoardData;
@@ -44,8 +46,12 @@ init();
 
 function init() {
     //generate empty boards and HUDS
-    playerBoardData = emptyBoardData();
-    aiBoardData = emptyBoardData();
+    emptyBoardDisplay(playerBoard);
+    emptyBoardDisplay(aiBoard);
+    emptyHudDisplay(playerHud);
+    emptyHudDisplay(aiHud);
+    playerBoardData = emptyBoardData(rows, columns);
+    aiBoardData = emptyBoardData(rows, columns);
     playerHudData = newHudData();
     aiHudData = newHudData();
 
@@ -54,6 +60,10 @@ function init() {
     winner = null;
     render();
 }
+
+console.log(playerBoardData)
+console.log(playerHudData)
+console.log()
 
 function render() {
     renderBoardDisplay(playerBoard, playerBoardData);
@@ -65,8 +75,8 @@ function render() {
 }
 
 //Create an Empty Board Data - OK!
-function emptyBoardData () {
-    return new Array(ROWS).fill(null).map(() => Array(COLUMNS).fill({id: 'w'}))
+function emptyBoardData (rows, columns) {
+    return new Array(rows).fill(null).map(() => Array(columns).fill({id: 'w'}))
 }
 
 //Create an Empty HUD Data - OK!
@@ -74,9 +84,8 @@ function newHudData() {
     return SHIPLIST;
 }
 
-//Generate Board Display - OK!
-function renderBoardDisplay (boardEl, dataEl, columns = 10, rows = 10) {
-    //turn = 1 ? boardEl = 'playerBoard' : boardEl = 'aiBoard'
+//Generate Empty Board Display - OK!
+function emptyBoardDisplay(boardEl, columns = 10, rows = 10) {
     //Generate Grid
     for(let column = 0; column < columns; column++) {
         const elColumn = document.createElement('div');
@@ -84,50 +93,69 @@ function renderBoardDisplay (boardEl, dataEl, columns = 10, rows = 10) {
             for(let row = 0; row < rows; row++) {
             const elRow = document.createElement('div');
             elRow.className = 'cell';
-            elRow.setAttribute('id', `${column}${row}`)
+            if(boardEl === playerBoard) {
+                elRow.setAttribute('id', `p${column}${row}`)
+            } else {
+                elRow.setAttribute('id', `a${column}${row}`)
+            }
             elColumn.appendChild(elRow);
         }
         boardEl.appendChild(elColumn);
     }
+}
+
+//Generate Empty HUD Display - OK!
+function emptyHudDisplay (hudEl) {
+    for (let i=0; i < SHIPLIST.length; i++) {
+        const ship = document.createElement('div');
+        if (hudEl === playerHud) {
+            ship.setAttribute('id', `p${SHIPLIST[i].name}`);
+        } else {
+            ship.setAttribute('id', `a${SHIPLIST[i].name}`);
+        }
+        ship.className = SHIPLIST[i].class;
+        hudEl.appendChild(ship);
+    }
+}
+
+//UPDATE Board Display using Data for each player
+function renderBoardDisplay (boardEl, dataEl) {
     dataEl.forEach(function(rowArr, colIdx){
         rowArr.forEach(function(cellObj, cellIdx) {
-            let cellId = `${cellIdx}${colIdx}`;
-            if (cellObj.hit) { //check if cellObj is true
+            let cellId;
+            if(boardEl === playerBoard) {
+                cellId = `p${cellIdx}${colIdx}`;
+            } else {
+                cellId = `a${cellIdx}${colIdx}`;
+            }
+            if (cellObj.hit === true) { //check if cellObj is true
                 if (cellObj.id === 'w') { 
-                    boardEl.getElementById(cellId).style.backgroundColor = 'blue';
+                    document.getElementById(cellId).style.backgroundColor = 'blue';
                     return;
                 } else { 
-                    boardEl.getElementById(cellId).style.backgroundColor = 'red';
+                    document.getElementById(cellId).style.backgroundColor = 'red';
                 }
             };
         });
     });
 }
 
+function renderHudDisplay(){
 
-
-//Generate HUD Display - OK!
-function renderHudDisplay (hudEl) {
-    for (let i=0; i < SHIPLIST.length; i++) {
-        const ship = document.createElement('div');
-        ship.setAttribute('id', SHIPLIST[i].name);
-        ship.className = SHIPLIST[i].class;
-        hudEl.appendChild(ship);
-    }
 }
+
 
 //Change display when board is clicked and update ship info in the HUD - OK!
 function handlePlayer (evt) {
     const tgt = evt.target;
     //Guards
     if (tgt.className !== 'cell') return;
-    if (tgt.parentElement.class)
     if (tgt.parentElement.parentElement.id !== 'aiboard') return; //Needs to check 2 parents above
     // Relate tgt ID to the Board Data 
-    // console.log(tgt);
-    const rowId = parseInt(tgt.id.split('').pop());
-    const colId = parseInt(tgt.id.split('').shift());
-    const cellObj = aiBoardData[rowId][colId];
+    console.log(tgt);
+    const rowId = parseInt(tgt.id.split('').pop()); //returns a number. row id. check:ok
+    const colId = parseInt(tgt.id.split('').slice(1,3)); //return a number. column id. check:ok
+    const cellObj = aiBoardData[rowId][colId]; //assign the position of the element in the 2D array to cellObj variable
     cellObj.hit = true; // « update board data
     // UPDATE HUD: if Hit was not water
     if (cellObj.id !== 'w') {  

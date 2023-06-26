@@ -61,7 +61,15 @@ section {
     align-items: center;
     height: 60vmin;
     width: 60vmin;
+}
 
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 60vmin;
+    width: 60vmin;
 }
 
 .shipcounter {
