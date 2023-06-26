@@ -6,6 +6,9 @@
     <title>Battleships</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Gruppo&family=Special+Elite&family=Ysabeau+SC:wght@300;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,22 +17,16 @@
             <title>Player's Board</title>
             <section id="playerboard">
             </section>
-            <counter class="shipcounter">
-                <div class="ship" class="sub"></div>
-                <div class="ship" class="destroyer"></div>
-                <div class="ship" class="cruiser"></div>
-                <div class="ship" class="carrier"></div>
+            <counter id="playerhud" class="shipcounter">
+
             </counter>
         </section>
         <section class="gamespace">
             <title>Computer's Board</title>
-            <section id="computerboard">
+            <section id="aiboard">
             </section>
-            <counter class="shipcounter">
-                <div class="ship" class="sub"></div>
-                <div class="ship" class="destroyer"></div>
-                <div class="ship" class="cruiser"></div>
-                <div class="ship" class="carrier"></div>
+            <counter id="aihud" class="shipcounter">
+
             </counter>
         </section>
     </main>

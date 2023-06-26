@@ -1,8 +1,24 @@
+/* font-family: 'Electrolize', sans-serif;
+font-family: 'Gruppo', sans-serif;
+font-family: 'Special Elite', cursive;
+font-family: 'Ysabeau SC', sans-serif; */
+
 * {
     box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --main-color: ;
+    --sea-sprite: ;
+    --hit-sprite: ;
+    --sub-sprite: ;
+    --des-sprite: ;
+    --cru-sprite: ;
 }
 
 body {
+    height: 100vh;
     padding: 10vmin;
     background-color: lightblue;
     display: flex;
@@ -25,7 +41,8 @@ main {
     align-items: center;
     align-content: space-around;
     gap: 2vmin;
-    padding: 1vmin
+    padding: 1vmin;
+    background-color: aqua;
 }
 
 title {
@@ -40,7 +57,7 @@ title {
 section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     height: 60vmin;
     width: 60vmin;
@@ -50,7 +67,7 @@ section {
 .shipcounter {
     display: flex;
     justify-content: space-around;
-    gap: 1vmin;
+    gap: 0.8vmin;
     background-color: sandybrown;
     flex-grow: 1;
 }
@@ -63,7 +80,6 @@ section {
 #turncounter {
     background-color: gray;
     flex-grow: 2;
-
 }
 
 
@@ -74,11 +90,11 @@ section {
 .column {
     display: flex;
     flex-direction:column;
-    justify-content: space-around;
-    align-content: ;
-    width: 4vmin;
-    height:60vmin;
-    margin: 0.5vmin;
+    justify-content: center;
+    align-content: center ;
+    width: auto;
+    height: auto;
+    
     background-color: transparent;
 
 }
@@ -88,10 +104,10 @@ section {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    width: 5vmin;
-    height: 5vmin;
-    margin: 0.5vmin;
-    background-color: gray;
+    width: 5.5vmin;
+    height: 5.5vmin;
+    border: 0.2vmin solid slategray;
+    background-color: lightgray;
 
 }
 
@@ -107,11 +123,10 @@ div {
 }
 
 #playerboard{
-    background-color: green;
 
 }
 
-#computerboard{
+#aiboard{
 
 }
 
