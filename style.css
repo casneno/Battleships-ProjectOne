@@ -20,7 +20,7 @@ font-family: 'Ysabeau SC', sans-serif; */
 body {
     height: 100vh;
     padding: 10vmin;
-    background-color: lightblue;
+    background-color: lightslategray;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,8 +30,10 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    /* align-items:center; */
     gap: 10vmin;
     padding: 1vmin;
+    
 }
 
 .gamespace {
@@ -42,15 +44,15 @@ main {
     align-content: space-around;
     gap: 2vmin;
     padding: 1vmin;
-    background-color: aqua;
+    /*background-color: lightblue;*/
 }
 
 title {
-    background-color: sandybrown;
+    color: black;
+    font-size: 2em;
+    font-family: 'Ysabeau SC', sans-serif;
     display: flex;
     padding: 1vmin;
-    flex-grow: 1;
-
 
 }
 
@@ -74,25 +76,18 @@ section {
 
 .shipcounter {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
-    gap: 0.8vmin;
-    background-color: sandybrown;
+    align-items:center;
+    gap: 0.8vmin 0.5vmin;
+    padding: 1vmin;
+    background-color: lightgrey;
     flex-grow: 1;
+    border: 0.6vmin solid darkslategray;
+    border-radius: 1vmin;
+
 }
-
-
-
-
-
-
-#turncounter {
-    background-color: gray;
-    flex-grow: 2;
-}
-
-
-
-
 
 
 .column {
@@ -102,8 +97,14 @@ section {
     align-content: center ;
     width: auto;
     height: auto;
-    
     background-color: transparent;
+}
+
+div {
+    display: flex;
+    background-color: grey;
+    width: 4vmin;
+    height: 4vmin;
 
 }
 
@@ -115,26 +116,56 @@ section {
     width: 5.5vmin;
     height: 5.5vmin;
     border: 0.2vmin solid slategray;
+    border-radius: 5%;
     background-color: lightgray;
 
 }
 
 
-
-div {
-    display: flex;
-    border-color: red;
-    background-color: grey;
-    width: 4vmin;
-    height: 4vmin;
-
-}
-
 #playerboard{
+    background-color: lightblue;
+    border-radius: 1vmin;
 
 }
 
 #aiboard{
+    background-color: lightblue;
+    border-radius: 1vmin;
 
 }
 
+.sub {
+    height: 4vmin;
+    width: 8vmin;
+}
+
+.destroyer {
+    height: 4vmin;
+    width: 12vmin;
+}
+
+.cruiser {
+    height: 4vmin;
+    width: 16vmin;
+}
+
+.carrier {
+    height: 4vmin;
+    width: 20vmin;
+}
+
+#psub3 {
+    margin-right: 2vmin;
+}
+
+#pdestroyer2 {
+    margin-right: 2vmin
+}
+
+#asub3 {
+    margin-right: 2vmin;
+}
+
+#adestroyer2 {
+    margin-right: 2vmin
+}
