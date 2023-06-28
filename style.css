@@ -10,6 +10,7 @@ font-family: 'Ysabeau SC', sans-serif; */
 
 :root {
     --main-color: ;
+    --sea: lightblue;
     --sea-sprite: ;
     --hit-sprite: ;
     --sub-sprite: ;
@@ -30,15 +31,71 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* align-items:center; */
-    gap: 10vmin;
+    align-items:center;
+    gap: 1vmin;
     padding: 1vmin;
+    flex-grow: 0;
     
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 80vmin;
+    width: 60vmin;
+}
+
+#controls {
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 0.6vmin solid darkred;
+    height: 70vmin;
+    width: 15vmin;
+    align-self: flex-end;
+    gap: 1vmin;
+}
+
+#message {
+    display: flex;
+    font-size: 10vmin;
+    color: white;
+    align-items: center;
+    flex: 3;
+    text-align: center;
+
+}
+
+#start {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    background-color: red;
+    border: 0.6vmin solid darkred;
+    border-radius: 1vmin;
+    font-size: 2vmin;
+    flex: 1;
+    visibility: hidden;
+
+}
+
+#deploy {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: space-around;
+    gap: 3vmin;
+    background-color: slateblue;
+    border: 0.6vmin solid darkblue;
+    border-radius: 1vmin;
+    font-size: 2vmin;
+    flex: 1;
+    visibility: visible;
 }
 
 .gamespace {
     display: flex;
-    flex: column;
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
@@ -56,17 +113,10 @@ title {
 
 }
 
-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 60vmin;
-    width: 60vmin;
-}
 
 .board {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -90,9 +140,8 @@ section {
 }
 
 
-.column {
+.row {
     display: flex;
-    flex-direction:column;
     justify-content: center;
     align-content: center ;
     width: auto;
