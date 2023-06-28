@@ -21,6 +21,7 @@ let playerBoardData;
 let aiBoardData;
 let playerHudData;
 let aiHudData;
+let gameStart;
 // let playerShipCounter;
 // let aiShipCounter;
 
@@ -34,14 +35,15 @@ let aiHud = document.querySelector('#aihud')
 let message = document.querySelector('#message')
 let startBtn = document.querySelector('#start')
 let placementBtn = document.querySelector('#deploy')
+let admitDefeatBtn = document.querySelector('#restart')
 //? message too!!!
 
 /*----- event listeners -----*/
 aiBoard.addEventListener('click', handlePlayer)
-placementBtn.addEventListener('click', shufflePlayer)
+placementBtn.addEventListener('click', deployFleet)
 startBtn.addEventListener('click', startGame)
+admitDefeatBtn.addEventListener('click', admitDefeat)
 //document.querySelector('gamespace').addEventListener('click', select)
-//document.addEventListener('keydown', rotate)
 
 
 
@@ -51,37 +53,35 @@ startBtn.addEventListener('click', startGame)
 init();
 
 function init() {
-    //Initialize Player
     rows = 10;
     columns = 10;
-    createBoardDisplay(playerBoard, rows, columns);
-    createHudDisplay(playerHud);
+    createBoardDisplay(playerBoard, rows, columns, playerHud);
+    // createHudDisplay(playerHud);
+    createBoardDisplay(aiBoard, rows, columns, aiHud);
+    // createHudDisplay(aiHud);
+    reset()
+}
+
+function reset() {
+    console.log("reset being fired")
     playerBoardData = emptyBoardData(rows, columns);
-    playerHudData = newHudData();
     console.log(playerBoardData);
-    //Initialize AI
-    createBoardDisplay(aiBoard, rows, columns);
-    createHudDisplay(aiHud);
+    playerHudData = newHudData();
     aiBoardData = emptyBoardData(rows, columns);
     aiHudData = newHudData();
     randomPlacement(aiBoardData); 
-    turn = 1;
     winner = null;
+    turn = 1;
+    startGame = false;
     render();
 }
 
-
-
 function render() {
-    handleAi()
+    renderMessage();
     renderBoardDisplay(playerBoard, playerBoardData, playerHud, playerHudData);
     renderBoardDisplay(aiBoard, aiBoardData, aiHud, aiHudData);
-    renderMessage();
-    // renderCounter();
+    handleAi()
 }
-
-
-//create a RESET game and remove every id and class from 
 
 /*------------------------------------------------------------MODEL FUNCTIONS-----------------------------------------------------------------*/
 
@@ -96,19 +96,37 @@ function newHudData() {
     return clone;
 }
 
-//Generate Ships in the start screen
-function shufflePlayer(){
+//Deploy Button - Generate Ships in the start screen - OK!
+function deployFleet(){
     playerBoardData = emptyBoardData(rows, columns);
     randomPlacement(playerBoardData);
     renderPreview(playerBoard, playerBoardData);
     startBtn.style.visibility = 'visible';//function to display start button. IN CSS toggle it to invisible
     render();
 }
+//Start Button
+function startGame(){
+    startGame = true;
+    startBtn.style.visibility = 'hidden';
+    placementBtn.style.visibility = 'hidden';
+    admitDefeatBtn.style.visibility = 'visible';
+    render();
+}
+
+function admitDefeat () {
+    let divs = document.querySelectorAll('div');
+    divs.forEach(function(div) {
+        div.remove();
+    });
+    placementBtn.style.visibility = 'visible';
+    admitDefeatBtn.style.visibility = 'hidden';
+    init()
+}
 
 /*------------------------------------------------------------VIEW FUNCTIONS-------------------------------------------------------*/
 
-//Generate Empty Board Display - OK!
-function createBoardDisplay(board, rows, columns) {
+//Generate Empty Board and HUD Display - OK!
+function createBoardDisplay(board, rows, columns, hud) {
     //Generate Grid
     for(let row = 0; row < rows; row++) {
         const elRow = document.createElement('div');
@@ -125,11 +143,6 @@ function createBoardDisplay(board, rows, columns) {
         }
         board.appendChild(elRow);
     }
-    
-}
-
-//Generate Empty HUD Display - OK!
-function createHudDisplay (hud) {
     for (let i=0; i < SHIPLIST.length; i++) {
         const ship = document.createElement('div');
         if (hud === playerHud) {
@@ -146,7 +159,7 @@ function createHudDisplay (hud) {
     }
 }
 
-//UPDATE Preview display
+//UPDATE Preview display - OK!
 function renderPreview (board, boardData) {
     boardData.forEach(function(rowArr, rowIdx){
         rowArr.forEach(function(cellObj, colIdx) {
@@ -203,28 +216,47 @@ function renderBoardDisplay (board, boardData, hud, hudData) {
     })
 }
 
+//UPDATE the displayed message
 function renderMessage() {
     if (turn === 1) {
-
+        message.innerHTML = "»<br>»<br>»<br>»";
+    } else if (turn === -1) {
+        message.innerHTML = "«<br>«<br>«<br>«";
+    } else {
+        winner === -1 ? message.innerText="AI Win!" : message.innerText="You Win!"
+        message.style.fontSize = "7vmin";
     }
 }
+
+//CHECK WINNER: Check Winning Conditon and return if someone won; - OK!
+function getWinner() {
+    const playerRemainingShips = playerHudData.reduce((acc,ship) => {
+        return acc + ship.size;
+    }, 0);
+    const aiRemainingShips = aiHudData.reduce((acc,ship) => {
+        return acc + ship.size;
+    }, 0);
+    console.log(aiRemainingShips);
+    if (playerRemainingShips === 0) {
+        turn = 0;
+        return -1;
+    }
+    if (aiRemainingShips === 0) {
+        turn = 0;
+        return 1;
+    }
+
+}
+
 
 
 /*-------------------------------------------------------------CONTROL FUNCTIONS----------------------------------------------------*/
 
-function startGame(){
-    placementBtn.style.visibility = 'hidden';
-    render();
-
-}
-
-function renderControls() {
-    start.innerText = winner ? 'PLAY AGAIN' : 'TO BATTLE STATIONS';
-}
 
 //HANDLE PLAYER: On click, update player board state when the board is clicked and update ship info in the ai HUD - OK!
 function handlePlayer(evt) {
-    if (turn === 1) {
+    if (!startGame) return;
+        if (turn === 1) {
         const tgt = evt.target;
         //Guards
         if (tgt.className !== 'cell') return;
@@ -282,21 +314,9 @@ function handleAi () {
         turn *= -1;
         render();
     } return;
-    //check DOM state: iterate through array; if there is a hit === true && go to random location; click; 
 }
 
-//CHECK WINNER: Check Winning Conditon and return if someone won; - OK!
-function getWinner() {
-    const playerRemainingShips = playerHudData.reduce((acc,ship) => {
-        return acc + ship.size;
-    }, 0);
-    const aiRemainingShips = aiHudData.reduce((acc,ship) => {
-        return acc + ship.size;
-    }, 0);
-    if (playerRemainingShips === 0) return 'AI Wins';
-    if (aiRemainingShips === 0)  return 'Player Wins';
 
-}
 
 //RANDOM SHIP PLACEMENT - OK!
 function randomPlacement(board){
@@ -317,7 +337,6 @@ function randomPlacement(board){
             };
         }
     });
-    //3) appear start button 
 };
             
 //CHECK PLACEMENT: Check if there are free squares within range of the selected coordinates for the selected ship - OK!

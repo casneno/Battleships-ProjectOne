@@ -50,7 +50,7 @@ section {
 #controls {
     flex-direction: column;
     flex-wrap: wrap;
-    border: 0.6vmin solid darkred;
+    /* border: 0.6vmin solid darkred; */
     height: 70vmin;
     width: 15vmin;
     align-self: flex-end;
@@ -71,7 +71,8 @@ section {
     display: flex;
     align-self: center;
     align-items: center;
-    background-color: red;
+    font-family: 'Special Elite', cursive;
+    background-color: rgb(168, 27, 27);
     border: 0.6vmin solid darkred;
     border-radius: 1vmin;
     font-size: 2vmin;
@@ -86,12 +87,29 @@ section {
     align-items: center;
     align-content: space-around;
     gap: 3vmin;
+    font-family: 'Special Elite', cursive;
     background-color: slateblue;
     border: 0.6vmin solid darkblue;
     border-radius: 1vmin;
     font-size: 2vmin;
     flex: 1;
     visibility: visible;
+}
+
+#restart {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: space-around;
+    gap: 3vmin;
+    font-family: 'Special Elite', cursive;
+    color: white;
+    background-color: rgb(42, 36, 78);
+    border: 0.6vmin solid darkblue;
+    border-radius: 1vmin;
+    font-size: 2vmin;
+    flex: 1;
+    visibility: hidden;
 }
 
 .gamespace {
@@ -107,7 +125,8 @@ section {
 title {
     color: black;
     font-size: 2em;
-    font-family: 'Ysabeau SC', sans-serif;
+    /* font-family: 'Ysabeau SC', sans-serif; */
+    font-family: 'Special Elite', cursive;
     display: flex;
     padding: 1vmin;
 
