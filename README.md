@@ -13,7 +13,7 @@ Since this is a free Web-based app, anyone can play it without any requirements.
 ## How to Play
 The battle screen is divided into two parts: Your board and the Ai's board. Each player's board has a **Battle Grid** display, where the battle rages and a **HUD** at the bottom which keeps track of which ships were sunk.  
 
-[battleships interface](images/battleships_Interface.png)
+![battleships interface](images/battleships_Interface.png)
 
 Brief
 Instructions
@@ -31,8 +31,8 @@ Insert your Brief here:
 
 The game was first conceived within the Wireframe displayed below and it's display and functionalities were gradually improved as the development progressed.  The steps were organized acording to a Pseudocode (see below) and the development stages were checked and added/removed using Evernote.
 
-| Main Screen | [Main Screen](https://github.com/casneno/Battleships-ProjectOne/blob/main/images/startscreen_battleships.png) |
-| Battle Screen | [Battle Screen](https://github.com/casneno/Battleships-ProjectOne/blob/main/images/wireframe_battleships.png) |
+| Main Screen | ![Main Screen](https://github.com/casneno/Battleships-ProjectOne/blob/main/images/startscreen_battleships.png) |
+| Battle Screen | ![Battle Screen](https://github.com/casneno/Battleships-ProjectOne/blob/main/images/wireframe_battleships.png) |
 
 ### Pseudocode
 
@@ -69,7 +69,7 @@ Below is the initial Pseudocode from the project planning:
  * Reset Board State
 
 *Creative Process and Brainstorming on Evernote*
-[brainstorming on evernote](https://github.com/casneno/Battleships-ProjectOne/blob/main/images/brainstorming_battleships.png)
+![brainstorming on evernote](https://github.com/casneno/Battleships-ProjectOne/blob/main/images/brainstorming_battleships.png)
 
 ### Building the Code
 
