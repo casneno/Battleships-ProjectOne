@@ -1,7 +1,7 @@
 /* font-family: 'Electrolize', sans-serif;
 font-family: 'Gruppo', sans-serif;
-font-family: 'Special Elite', cursive;
 font-family: 'Ysabeau SC', sans-serif; */
+/* font-family: 'Special Elite', cursive; */
 
 * {
     box-sizing: border-box;
@@ -124,12 +124,11 @@ section {
 
 title {
     color: black;
-    font-size: 2em;
+    font-size: 5vmin;
     /* font-family: 'Ysabeau SC', sans-serif; */
     font-family: 'Special Elite', cursive;
     display: flex;
     padding: 1vmin;
-
 }
 
 
@@ -205,21 +204,29 @@ div {
 .sub {
     height: 4vmin;
     width: 8vmin;
+    border: 0.3vmin solid black;
+    border-radius: 5%;
 }
 
 .destroyer {
     height: 4vmin;
     width: 12vmin;
+    border: 0.3vmin solid black;
+    border-radius: 5%;
 }
 
 .cruiser {
     height: 4vmin;
     width: 16vmin;
+    border: 0.3vmin solid black;
+    border-radius: 5%;
 }
 
 .carrier {
     height: 4vmin;
     width: 20vmin;
+    border: 0.3vmin solid black;
+    border-radius: 5%;
 }
 
 #psub3 {

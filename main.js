@@ -202,6 +202,9 @@ function renderBoardDisplay (board, boardData, hud, hudData) {
                     document.getElementById(cellId).style.backgroundColor = 'red';
                 }
             };
+            if (cellObj.destroyed) {
+                document.getElementById(cellId).style.backgroundColor = 'darkred';
+            }
         });
     });
     //-------HUD-------
@@ -236,7 +239,6 @@ function getWinner() {
     const aiRemainingShips = aiHudData.reduce((acc,ship) => {
         return acc + ship.size;
     }, 0);
-    console.log(aiRemainingShips);
     if (playerRemainingShips === 0) {
         turn = 0;
         return -1;
@@ -272,6 +274,16 @@ function handlePlayer(evt) {
         if (cellObj.id !== 'w') {  
             let shipHit = aiHudData.find((ship) => ship.name === cellObj.id);
             shipHit.size--;
+            if(shipHit.size === 0) { //if ship is destroyed, find it in the array and assign new key pair of 'destroyed:true'
+                aiBoardData.forEach(function (rowArr, rowIdx) {
+                    rowArr.forEach(function (cellObj, colIdx) {
+                        if (cellObj.id === shipHit.name) { 
+                            cellObj = {...aiBoardData[rowIdx][colIdx], destroyed:true}; //clone teh object and assign a key-pair of 'destroyed:true' to it. Store it in 'cellObj' variable.
+                            aiBoardData[rowIdx][colIdx] = cellObj;
+                        }
+                    })
+                })
+            }
             // let shipIdx = aiHudData.indexOf(shipHit);
             // aiHudData[shipIdx].size--;
             //let cloneSize = shipHit.size --; //reduce the ship size in the HUD
@@ -281,10 +293,9 @@ function handlePlayer(evt) {
             //     document.querySelector(shipHit.name).style.backgroundColor = 'darkred';
             // }
         }
-        console.log(tgt.id)
-        console.log(rowIdx, colIdx, cellObj, aiBoardData)
-        
-        console.log(playerBoardData, aiBoardData, playerHudData, aiHudData)
+        // console.log(tgt.id)
+        // console.log(rowIdx, colIdx, cellObj, aiBoardData)
+        //console.log(playerBoardData, aiBoardData, playerHudData, aiHudData)
         winner = getWinner();
         turn *= -1;
         render();
@@ -292,6 +303,8 @@ function handlePlayer(evt) {
 }
 
 //HANDLE AI: Basic AI randomized move. Update ai board state and player HUD. NO LOGIC IMPLEMENTED
+//----------------CHANGE BELOW------------------------------
+
 function handleAi () {
     if (turn === -1) {
         let rowIdx = Math.floor(Math.random()*rows);
@@ -306,8 +319,16 @@ function handleAi () {
         if (cellObj.id !== 'w') {  
             let shipHit = playerHudData.find((ship) => ship.name === cellObj.id);
             shipHit.size --; //reduce the ship size in the HUD
-            console.log(rowIdx, colIdx)
-            console.log(document.getElementById(`p${rowIdx}${colIdx}`))
+            if(shipHit.size === 0) { //if ship is destroyed, find it in the array and assign new key pair of 'destroyed:true'
+                playerBoardData.forEach(function (rowArr, rowIdx) {
+                    rowArr.forEach(function (cellObj, colIdx) {
+                        if (cellObj.id === shipHit.name) {
+                            cellObj = {...playerBoardData[rowIdx][colIdx], destroyed:true}; //clone teh object and assign a key-pair of 'destroyed:true' to it. Store it in 'cellObj' variable.
+                            playerBoardData[rowIdx][colIdx] = cellObj;
+                        }
+                    })
+                })
+            }
             document.getElementById(`p${rowIdx}${colIdx}`).classList.add(shipHit.name);
         }
         winner = getWinner();
@@ -315,6 +336,8 @@ function handleAi () {
         render();
     } return;
 }
+
+//------------------------------CHANGE ABOVE----------------------------
 
 
 
@@ -424,4 +447,69 @@ function placeShip (board, rowIdx, colIdx, ship, direction) {
 //     });
 //     });
 //     return rotate;
+// }
+
+
+
+
+
+
+
+// function handleAi () {
+//     if (turn === -1) {
+//         playerBoardData.forEach(function (rowArr, rowIdx) {
+//             rowArr.forEach(function (cellObj, colIdx) {
+//               if (cellObj.hit && cellObj.id !== 'w') {
+//                   if (!cellObj.destroyed) {
+//                     if(!playerBoardData[rowIdx][colIdx+1].hit && colIdx+1 < columns) {
+//                       executeAiMove(rowIdx, colIdx+1);
+//                       console.log("Planned move to the right")
+//                       return;
+//                     } else if (!playerBoardData[rowIdx+1][colIdx].hit && rowIdx+1 < rows) {
+//                         executeAiMove(rowIdx+1, colIdx);
+//                         console.log("Planned move down")
+//                         return;
+//                     };
+//                   };
+//               };
+//             });
+//         });
+//         console.log("randomized")
+//         let rowIdx = Math.floor(Math.random()*rows);
+//         let colIdx = Math.floor(Math.random()*columns);
+//           while(playerBoardData[rowIdx][colIdx].hit){
+//               rowIdx = Math.floor(Math.random()*rows);
+//               colIdx = Math.floor(Math.random()*columns);
+//           }
+//         executeAiMove(rowIdx, colIdx);
+//         return;
+//     }
+// }
+
+
+// function executeAiMove(rowIdx, colIdx) {
+//     console.log("entered execute function")
+//     console.log(rowIdx, colIdx)
+//     const cellObj = {...playerBoardData[rowIdx][colIdx], hit:true}; //clone teh object and assign a key-pair of 'hit:true' to it. Store it in 'cellObj' variable.
+//     playerBoardData[rowIdx][colIdx] = cellObj; // assign the cellObj value to the desired position
+//     if (cellObj.id !== 'w') {  
+//         let shipHit = playerHudData.find((ship) => ship.name === cellObj.id);
+//         shipHit.size --; //reduce the ship size in the HUD
+//         if(shipHit.size === 0) { //if ship is destroyed, find it in the array and assign new key pair of 'destroyed:true'
+//             playerBoardData.forEach(function (rowArr, rowIdx) {
+//                 rowArr.forEach(function (cellObj, colIdx) {
+//                     if (cellObj.id === shipHit.name) {
+//                         cellObj = {...playerBoardData[rowIdx][colIdx], destroyed:true}; //clone teh object and assign a key-pair of 'destroyed:true' to it. Store it in 'cellObj' variable.
+//                         playerBoardData[rowIdx][colIdx] = cellObj;
+//                     }
+//                 })
+//             })
+//         }
+//         // console.log(rowIdx, colIdx)
+//         // console.log(document.getElementById(`p${rowIdx}${colIdx}`))
+//         document.getElementById(`p${rowIdx}${colIdx}`).classList.add(shipHit.name);
+//     }
+//     winner = getWinner();
+//     turn *= -1;
+//     render();
 // }
