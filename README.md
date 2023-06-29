@@ -15,15 +15,29 @@ The battle screen is divided into two parts: Your board and the Ai's board. Each
 
 ![battleships interface](images/battleships_Interface.png)
 
-Brief
-Instructions
+When the game starts, the player will be given the option of clicking the DEPLOY FLEET button.  The ships will be randomly placed in the sea within the player's board.  If you don't think the layout will be optimal for defense, you can redeploy the ships as many times you want to.
 
-Include the brief set by your instructional team here. This sets the context of the project you were working towards and mimics briefs you will be set later in your future roles.
+Whenever you are satisfied about the positioning, head to BATTLE STATIONS!.
 
-This can either be in bullets or in a paragraph.
+The game is played by clicking the AI's grids, trying to find their ships. Upon clicking a cell, there may be 3 possible outcomes:
 
+1. You missed your shot and hit WATER. The square will turn light blue ![water](https://placehold.co/15x15/add8e6/add8e6.png)
+2. You hit a ship SEGMENT. The cell will then turn red ![segment](https://placehold.co/15x15/dc143c/dc143c.png)
+3. You DESTROY an entire ship, by striking everyone of it's segments.  The entire ship will turn dark red and the AI's HUD will display that that ship was DESTROYED ![destroyed](https://placehold.co/15x15/8b0000/8b0000.png)
 
-Insert your Brief here:
+## Brief
+
+The SEI Project 1 Include the following Technical requirements:
+
+☐ Render a game in the browser.
+☐ Include win/loss logic and render win/loss messages in HTML. Popup alerts using the alert() method are okay during development, but not production.
+☐ Include separate HTML, CSS & JavaScript files.
+☐ Use vanilla JavaScript, not jQuery.
+☐ Have properly indented HTML, CSS & JavaScript. In addition, vertical whitespace needs to be consistent.
+☐ No remaining unused and/or commented out code (code that will never be called) .
+☐ Have functions and variables that are named sensibly. Remember, functions are typically named as verbs and variables (data) named as nouns.
+☐ Be coded in a consistent manner. For example, choose between your preference for function declarations vs. function expressions.
+☐ Be deployed online using GitHub Pages so that the rest of the world can play your game!
 
 ## About
 
