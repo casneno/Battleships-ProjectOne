@@ -158,7 +158,7 @@ function renderBoardDisplay (board, boardData, hud, hudData) {
                     }
                     return;
                 } else { 
-                    document.getElementById(cellId).style.backgroundColor = 'red';
+                    document.getElementById(cellId).style.backgroundColor = 'crimson';
                 }
             };
             if (cellObj.destroyed) {
