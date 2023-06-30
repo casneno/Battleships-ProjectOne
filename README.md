@@ -1,4 +1,4 @@
-# Battleships
+# Battleships - The Invasion
 
 ## To Battlestations!
 In Battleships you have received the command of an artilery unit responsible for repeling the enemy's fleet.  Your own navy must de deployed to hold the enemy ships advancement while your artilery gets the job done.  Your fleet and yourself are the last line of defense against the imminent invasion! Defeat their ships before they sink your fleet!  
@@ -205,9 +205,10 @@ The game itself was a win for myself, having been the fist game I developed in a
  * How to make use MDN Web DOCs, W3Schools, GeeksforGeeks, StackOverflow and other online resources when I get stuck.
  * If I were to rebuild my code, I would do it using arrow functions instead of declarations for their practicality and shorthand.
 
-### Bugs
+### Bugs & Known Issues
 
 * The MVP version has no Bugs in it and is fully functional.
+* The player is wrongly able to click anywhere he has already clicked in the AI Board
 
 ### Future Improvements
 
