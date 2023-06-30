@@ -1,7 +1,7 @@
 # Battleships - The Invasion
 
 ## To Battlestations!
-In Battleships you have received the command of an artilery unit responsible for repeling the enemy's fleet.  Your own navy must de deployed to hold the enemy ships advancement while your artilery gets the job done.  Your fleet and yourself are the last line of defense against the imminent invasion! Defeat their ships before they sink your fleet!  
+In Battleships - The Invasion you have received the command of an artilery unit responsible for repeling the enemy's fleet.  Your own navy must de deployed to hold the enemy ships advancement while your artilery gets the job done.  Your fleet and yourself are the last line of defense against the imminent invasion! Defeat their ships before they sink your fleet and raid your homeland!  
 
 ## Description & Motivation
 This Battleship games is the first of four projects in the General Assembly SEI Course.  The purpose of this project was for us to apply our knowledge of the first part of the course. This game was a solo development over the course of one week.  The game was developed using the following technologies: 
