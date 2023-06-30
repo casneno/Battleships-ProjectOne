@@ -5,6 +5,7 @@ In Battleships - The Invasion you have received the command of an artilery unit 
 
 ## Description & Motivation
 This Battleship games is the first of four projects in the General Assembly SEI Course.  The purpose of this project was for us to apply our knowledge of the first part of the course. This game was a solo development over the course of one week.  The game was developed using the following technologies:  
+  
 ![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5)   
 ![CSS3](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3)   
 ![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)  
