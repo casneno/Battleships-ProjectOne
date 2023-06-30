@@ -208,7 +208,8 @@ The game itself was a win for myself, having been the fist game I developed in a
 ### Bugs & Known Issues
 
 * The MVP version has no Bugs in it and is fully functional.
-* The player is wrongly able to click anywhere he has already clicked in the AI Board
+* The player is wrongly able to click anywhere he has already clicked in the AI Board.
+* The Replay Button doesn't change it's text when there is a winner.
 
 ### Future Improvements
 
