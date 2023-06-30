@@ -4,8 +4,10 @@
 In Battleships - The Invasion you have received the command of an artilery unit responsible for repeling the enemy's fleet.  Your own navy must de deployed to hold the enemy ships advancement while your artilery gets the job done.  Your fleet and yourself are the last line of defense against the imminent invasion! Defeat their ships before they sink your fleet and raid your homeland!  
 
 ## Description & Motivation
-This Battleship games is the first of four projects in the General Assembly SEI Course.  The purpose of this project was for us to apply our knowledge of the first part of the course. This game was a solo development over the course of one week.  The game was developed using the following technologies: 
-![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5) ![CSS3](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3) ![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)  
+This Battleship games is the first of four projects in the General Assembly SEI Course.  The purpose of this project was for us to apply our knowledge of the first part of the course. This game was a solo development over the course of one week.  The game was developed using the following technologies:  
+![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5)   
+![CSS3](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3)   
+![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)  
 
 ### Try it out!
 Since this is a free Web-based app, anyone can play it without any requirements. Just click this [link](https://casneno.github.io/Battleships-ProjectOne/) to play the game!  
